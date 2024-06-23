@@ -1,7 +1,7 @@
 # src/linkedin_api.py
 
 import requests
-from config.config import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_CODE
+from config.config import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI
 
 def get_access_token(auth_code):
     response = requests.post(

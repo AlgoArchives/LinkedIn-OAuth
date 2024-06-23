@@ -1,10 +1,13 @@
 # src/main.py
 
-from flask import Flask, request, redirect
+from flask import Flask, redirect, request
 from linkedin_api import get_access_token, get_connections, get_profile_details
 from utils import save_details_to_file
+from config.config import CLIENT_ID
 
 app = Flask(__name__)
+
+REDIRECT_URI = 'http://localhost:8000/callback'
 
 @app.route('/')
 def home():
