@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="jumbotron mt-5">
+    <h1 class="display-4">Welcome to LinkedIn OAuth Example!</h1>
+    <p class="lead">This is a simple application to demonstrate LinkedIn OAuth using Flask.</p>
+    <hr class="my-4">
+    <p>Click the button below to log in with LinkedIn and fetch your connections.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Log in with LinkedIn</a>
+  </div>
+{% endblock %}

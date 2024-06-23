@@ -4,16 +4,18 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, render_template, url_for
 from linkedin_api import get_access_token, get_connections, get_profile_details
 from utils import save_details_to_file
-from config.config import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI
+from config.config import CLIENT_ID
 
 app = Flask(__name__)
 
+REDIRECT_URI = 'http://localhost:8000/callback'
+
 @app.route('/')
 def home():
-    return 'Welcome to the LinkedIn OAuth example!'
+    return render_template('home.html')
 
 @app.route('/login')
 def login():
@@ -40,7 +42,7 @@ def callback():
     
     save_details_to_file(pending_connections, high_follower_connections)
     
-    return 'Details saved to file.'
+    return render_template('callback.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
